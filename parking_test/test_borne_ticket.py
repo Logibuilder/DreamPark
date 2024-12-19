@@ -1,6 +1,9 @@
 import unittest
 import pydoc
 
+from parking.borne_ticket import BorneTicket
+
+
 class TestBorneTicket(unittest.TestCase):
     """
         Auteur de cette classe : ASSANE KANE
@@ -8,11 +11,11 @@ class TestBorneTicket(unittest.TestCase):
 
     def setUp(self):
         """Code pour initialiser les données de test"""
-        pass
+        self.borne1 = BorneTicket(1)
 
     def tearDown(self):
         """ Code pour nettoyer après le test"""
-        pass
+        self.borne1 = None
 
     def test_delivrer_ticket(self):
         """
@@ -42,7 +45,8 @@ class TestBorneTicket(unittest.TestCase):
         """
         verifier si modePayement = carte et espece
         """
-        pass
+        res = self.borne1.proposer_type_paiement()
+        self.assertEqual(res, "Opération annulée")
 
     pydoc.writedoc("borne_icket")
 

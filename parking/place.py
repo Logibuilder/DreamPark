@@ -1,4 +1,6 @@
 import pydoc
+
+
 class Place:
     """
     Auteur de cette classe : ASSANE KANE
@@ -34,7 +36,7 @@ class Place:
         self.longeur = longeur
         self.hauteur = hauteur
         self.est_libre = True
-        self.id = niveau+str(self.numero)
+        self.id = niveau+f"{str(self.numero).zfill(3)}"
 
 
     def set_valeur_libre(self, bool):
@@ -43,7 +45,7 @@ class Place:
 
         :param est_libre: Booléen indiquant si la place est libre (True) ou occupée (False).
         """
-        est_libre = bool
+        self.est_libre = bool
 
 
     def __add_placement__(self, placement):
@@ -54,6 +56,20 @@ class Place:
         """
         pass
 
+    def __str__(self):
+        """
+        Retourne une représentation compacte et esthétique de la place de parking avec des icônes.
+        """
+        statut = "✅" if self.est_libre else "❌"  # 🟢 pour libre, ❌ pour occupée
+        id = f"\033[92m{self.id}\033[0m" if self.est_libre else f"\033[91m{self.id}\033[0m"
+        return  f"{id} {statut} (L{self.longeur}m x H{self.hauteur}m)"
 
-pydoc.writedoc("place")
+#pydoc.writedoc("place")
+
+place = Place(5, "A", 5, 5)
+
+#place.set_valeur_libre(False)
+#print(place)
+
+
 

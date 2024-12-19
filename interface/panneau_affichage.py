@@ -1,4 +1,4 @@
-from parking import parking
+import parking
 
 
 class PanneauAffichage:

@@ -1,6 +1,6 @@
 import pydoc
-from parking import place
-from parking.niveau import niveau
+from parking.niveau import Niveau
+from parking.voiture import Voiture
 
 
 class Parking:
@@ -24,18 +24,18 @@ class Parking:
     - lesNiveau : list
         Liste des niveaux disponibles dans le parking, initialisée avec des objets de type `niveau`.
     """
-    nbPlacesParNiveau = 50
-    nbPlacesLibre = 250
-    prix = 30#euro
-    nbNiveau = 4
-    A = niveau("A", 50)
-    B = niveau("B", 50)
-    C = niveau("C", 50)
-    D = niveau("D", 50)
+    def __init__(self):
+        self.nbPlacesParNiveau = 50
+        self.nbPlacesLibre = 250
+        self.prix = 30#euro
+        self.nbNiveau = 4
+        A = Niveau("A", 3 , 1.90, 3)
+        B = Niveau("B", 3 , 2 , 4 )
+        C = Niveau("C", 4 , 2.70 , 5)
+        D = Niveau("D", 4 , 3 , 7)
+        self.lesNiveau = [A, B, C, D]
 
-    lesNiveau = [A, B, C, D]
-
-    def rechercher_place(self, voiture):
+    def rechercherPlace(self, hauteur , longueur):
         """
         Recherche une place libre dans le parking pour une voiture donnée.
 
@@ -43,6 +43,14 @@ class Parking:
         :return: Une place disponible ou `None` si aucune place n'est disponible.
         return place  ou une valeur particulière.
         """
+        for level in self.lesNiveau:
+            val_particuliere, numplace, nom_niveau = level.a_place_diponible(hauteur, longueur)
+            if val_particuliere == "place":
+                return val_particuliere, numplace, nom_niveau
+        return "null_place", -1, "null_niveau"  # Si aucune place n'est trouvée
+
+
+
 
     def nb_places_libres_par_niveau(self, niveau):
         """
@@ -69,7 +77,16 @@ class Parking:
         """
         pass
 
+    def afficherCurrentSituation(self):
+        for niveau in self.lesNiveau:
+            niveau.afficherCurrentSituation()
 
-pydoc.writedoc("parking")
 
+    def __str__(self):
+        for niveau in self.lesNiveau:
+            print(niveau)
+        print("\n\n\n")
+
+
+#pydoc.writedoc("parking")
 

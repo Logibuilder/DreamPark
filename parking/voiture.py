@@ -1,6 +1,7 @@
 import pydoc
 
 class Voiture:
+
     """
     Auteur de cette classe : ASSANE KANE
 
@@ -18,7 +19,6 @@ class Voiture:
     - est_dans_parking : bool
         Indique si la voiture est actuellement garée dans le parking.
     """
-
     def __init__(self, hauteur, longueur, immatri):
         """
         Initialise une voiture avec ses dimensions et son immatriculation.
@@ -42,4 +42,4 @@ class Voiture:
         """
         pass
 
-pydoc.writedoc("Voiture")
+#pydoc.writedoc("Voiture")

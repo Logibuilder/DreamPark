@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module place</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">place</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ckanea%5Conedrive%5Cdocuments%5C2024_2025%5Cpoo%5Cprojet_parking%5Cparking%5Cplace.py">c:\users\kanea\onedrive\documents\2024_2025\poo\projet_parking\parking\place.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="pydoc.html">pydoc</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="place.html#Place">Place</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Place">class <strong>Place</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#Place">Place</a>(numero,&nbsp;niveau,&nbsp;longeur,&nbsp;hauteur)<br>
+&nbsp;<br>
+Auteur&nbsp;de&nbsp;cette&nbsp;classe&nbsp;:&nbsp;ASSANE&nbsp;KANE<br>
+&nbsp;<br>
+Classe&nbsp;représentant&nbsp;une&nbsp;place&nbsp;de&nbsp;parking.<br>
+&nbsp;<br>
+Attributs&nbsp;:<br>
+----------<br>
+-&nbsp;numero&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Numéro&nbsp;unique&nbsp;de&nbsp;la&nbsp;place&nbsp;dans&nbsp;son&nbsp;niveau.<br>
+-&nbsp;niveau&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Identifiant&nbsp;du&nbsp;niveau&nbsp;auquel&nbsp;appartient&nbsp;la&nbsp;place&nbsp;(ex.&nbsp;:&nbsp;"A",&nbsp;"B").<br>
+-&nbsp;longueur&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Longueur&nbsp;de&nbsp;la&nbsp;place&nbsp;(en&nbsp;mètres).<br>
+-&nbsp;hauteur&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Hauteur&nbsp;de&nbsp;la&nbsp;place&nbsp;(en&nbsp;mètres).<br>
+-&nbsp;est_libre&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indique&nbsp;si&nbsp;la&nbsp;place&nbsp;est&nbsp;libre&nbsp;ou&nbsp;non.<br>
+-&nbsp;id&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Identifiant&nbsp;unique&nbsp;de&nbsp;la&nbsp;place&nbsp;(composé&nbsp;du&nbsp;niveau&nbsp;et&nbsp;du&nbsp;numéro).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="Place-__add_placement__"><strong>__add_placement__</strong></a>(self, placement)</dt><dd><span class="code">Associe&nbsp;un&nbsp;placement&nbsp;(occupation)&nbsp;à&nbsp;cette&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;placement:&nbsp;L'objet&nbsp;représentant&nbsp;le&nbsp;placement&nbsp;à&nbsp;associer.</span></dd></dl>
+
+<dl><dt><a name="Place-__init__"><strong>__init__</strong></a>(self, numero, niveau, longeur, hauteur)</dt><dd><span class="code">Initialise&nbsp;une&nbsp;place&nbsp;de&nbsp;parking.<br>
+&nbsp;<br>
+:param&nbsp;numero:&nbsp;Numéro&nbsp;unique&nbsp;de&nbsp;la&nbsp;place.<br>
+:param&nbsp;niveau:&nbsp;Identifiant&nbsp;du&nbsp;niveau&nbsp;de&nbsp;la&nbsp;place.<br>
+:param&nbsp;longueur:&nbsp;Longueur&nbsp;de&nbsp;la&nbsp;place.<br>
+:param&nbsp;hauteur:&nbsp;Hauteur&nbsp;de&nbsp;la&nbsp;place.</span></dd></dl>
+
+<dl><dt><a name="Place-__str__"><strong>__str__</strong></a>(self)</dt><dd><span class="code">Retourne&nbsp;une&nbsp;représentation&nbsp;compacte&nbsp;et&nbsp;esthétique&nbsp;de&nbsp;la&nbsp;place&nbsp;de&nbsp;parking&nbsp;avec&nbsp;des&nbsp;icônes.</span></dd></dl>
+
+<dl><dt><a name="Place-set_valeur_libre"><strong>set_valeur_libre</strong></a>(self, bool)</dt><dd><span class="code">Modifie&nbsp;l'état&nbsp;d'occupation&nbsp;de&nbsp;la&nbsp;place.<br>
+&nbsp;<br>
+:param&nbsp;est_libre:&nbsp;Booléen&nbsp;indiquant&nbsp;si&nbsp;la&nbsp;place&nbsp;est&nbsp;libre&nbsp;(True)&nbsp;ou&nbsp;occupée&nbsp;(False).</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>place</strong> = &lt;place.Place object&gt;</td></tr></table>
+</body></html>

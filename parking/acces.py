@@ -25,6 +25,7 @@ class Acces:
         afficher les information mises à jour du parking(places disponibles)
         """
 
+
     def lancer_procedure_entree(self, client):
         """appelle la methode teleporter() de teleporteur"""
 

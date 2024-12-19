@@ -46,4 +46,3 @@ class Placement:
         pass
 
 
-pydoc.writedoc("placement")

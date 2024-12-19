@@ -1,4 +1,7 @@
 import pydoc
+from datetime import date, timedelta
+
+from parking.placement import Placement
 
 
 class Teleporteur:
@@ -11,8 +14,14 @@ class Teleporteur:
         """
         self.num = int(num)
 
-    def test_teleporter_voiture(self):
-        pass
+    def teleporter_voiture(self, ticket, action):
+        if action == "garer" :
+            print("voiture garée avec succés")
+            return Placement(date.today(), date.today() + timedelta(days=1))
+
+        if action == "recuper" :
+            print("voiture recupérée")
 
 
-pydoc.writedoc("teleporteur")
+
+#pydoc.writedoc("teleporteur")

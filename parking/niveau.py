@@ -1,5 +1,7 @@
 import pydoc
 
+from parking.place import Place
+from parking.voiture import Voiture
 
 
 class Niveau:
@@ -22,7 +24,7 @@ class Niveau:
         self.nbplace = nbplace
         self.nbplace_disponible = nbplace
         self.nbplace_occupees = 0
-
+        self.listePlace = [Place(place, nom, longueur, hauteur) for place in range(self.nbplace)]
 
     def decrementer_nbplace_disponible(self):
         """
@@ -55,19 +57,46 @@ class Niveau:
 
 
     def a_place_diponible(self, H, L):
-        if self.nbplace_disponible != 0  and H <= self.hauteur and L <= self.longueur :
-            self.nbplace_occupees +=1
-            self.nbplace_disponible -=1
-            return ( "place", self.nbplace - self.nbplace_disponible )
+        if self.nbplace_disponible > 0:
+            if H <= self.hauteur and L <= self.longueur:
+                self.nbplace_occupees += 1
+                self.nbplace_disponible -= 1
+                return "place", self.nbplace_occupees, self.nom
+            else:
+                return "null_place", -1, "null_niveau"  # Si la taille de la voiture ne correspond pas
+        else:
+            return "null_place", -1, "null_niveau"  # Si aucune place disponible
 
-        else :
-            return ("null_place", -1)
+    def afficherCurrentSituation(self):
+        print(f"//////////////////////////niveau {self.nom}//////////////////////////////")
+        for i in range(1, self.nbplace+1):
+            if i <= self.nbplace_occupees :
+                print("🚗", end="" )
+            else :
+                print("🚙", end="")
+            if i %5 == 0 :
+                print("")
+        print(f"Le nombre de paces disponible dans le niveau {self.nom} est {self.nbplace_disponible}\n")
+        print(f"Le nombre de paces occupées dans le niveau {self.nom} est {self.nbplace_occupees}\n")
+        print(f"Le nombre de paces totales dans le niveau {self.nom} est {self.nbplace}\n")
+        print("////////////////////////////////////////////////////////////////////////")
+
+    def  __str__(self):
+        res = ""
+        for place in self.listePlace:
+            res+=f"\033[94m||| \033[0m"
+            res+=place.__str__() + " "
+        return res
 
 
+    #pydoc.writedoc("niveau")
 
-    pydoc.writedoc("niveau")
+
+A = Niveau("A", 3 , 1.90, 3)
+
+voiture1 = Voiture(1.90, 4 , "OUMOU")
+
+voiture2 = Voiture(1.90, 2, "OUMOU")
 
 
-niveau = Niveau("A", 2, 2, 4)
-print(niveau.a_place_diponible(2, 1))
-print(niveau.nbplace_disponible)
+print(A)
