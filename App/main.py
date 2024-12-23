@@ -4,7 +4,7 @@ from controller.ticket import Ticket
 from parking import teleporteur
 from parking.voiture import Voiture
 from service.client import Client
-from parking.acces import Acces
+from parking.acces import Acces, panneau
 
 acces = Acces("Accès Principal")
 
@@ -18,6 +18,8 @@ if __name__ == "__main__":
         print("5. Voir les tickets")
         print("6. Quittez le programme")
         print("7. Ajouter ou changer de voiture pour un client")
+        print("8. Voir le panneau d'affichage")
+
 
         choix = input("Que souhaitez-vous faire ? (1-7) : ")
 
@@ -81,5 +83,7 @@ if __name__ == "__main__":
                     print("Aucune modification effectuée.")
             else:
                 print(f"Aucun client trouvé avec le nom {nom_client}.")
+        elif choix == "8":
+            panneau.afficherPaneau()
         else:
             print("Choix invalide. Veuillez réessayer.\n")

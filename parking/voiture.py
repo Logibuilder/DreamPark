@@ -40,6 +40,8 @@ class Voiture:
 
         :param placement: L'objet Placement correspondant à la place attribuée (type: Placement).
         """
-        pass
+        self.est_dans_parking = True
+        # Logique de gestion du placement à définir ici
+        return True
 
-#pydoc.writedoc("Voiture")
+#pydoc.writedoc("voiture")

@@ -44,6 +44,7 @@ class TestNiveau(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    pydoc.writedoc("testNiveau")
     unittest.main()
     
     

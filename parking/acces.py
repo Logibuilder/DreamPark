@@ -10,7 +10,7 @@ from parking.borne_ticket import BorneTicket
 
 from parking.teleporteur import Teleporteur
 
-
+import logging
 panneau = PanneauAffichage()
 
 class Acces:
@@ -35,6 +35,7 @@ class Acces:
         """
 
     def direBonjour(self, client):
+        logging.info(f"Bonjour {client.nom}, bienvenue chez DreamPark !")
         print(f"Bonjour {client.nom}, bienvenue chez DreamPark !")
 
     def actionner_panneau(self , panneau):
@@ -59,12 +60,14 @@ class Acces:
         if place == None:
 
             print("Il n y a pas de palce dans lee parking pour cette voitre")
+            logging.info("Il n'y a pas de place dans le parking pour cette voiture")
             return
         else:
             payment = instanceBorneTicket.proposer_type_paiement()
             ticket = Ticket(client, place , payment)
 
             print(ticket)
+            logging.info(f"Ticket généré : {ticket}")
             instanceTeleporteur.teleporter_voiture("garer")
 
             self.actionner_panneau(panneau)
@@ -80,15 +83,21 @@ class Acces:
         if service == "livraison":
             adresse = info.get("adresse")
             heure = info.get("heure")
+            ogging.info(f"Votre voiture sera livrée à l'adresse : {adresse} à {heure}.")
+            # Ajouter ici la logique de livraison (système de réservation ou d'affectation de voiturier)
             print(f"Votre voiture sera livrée à l'adresse : {adresse} à {heure}.")
             # Ajouter ici la logique de livraison (système de réservation ou d'affectation de voiturier)
             self.informerParking(ticket)
         elif service == "entretien":
             print("Votre voiture sera dirigée vers le service d'entretien.")
             # Ajouter ici la logique pour diriger la voiture au service d'entretien
+            logging.info("Votre voiture sera dirigée vers le service d'entretien.")
+            # Ajouter ici la logique pour diriger la voiture au service d'entretien
             self.informerParking(ticket)
         elif service == "maintenance":
             print("Votre voiture sera dirigée vers le service de maintenance.")
+            # Ajouter ici la logique pour diriger la voiture au service de maintenance
+            logging.info("Votre voiture sera dirigée vers le service de maintenance.")
             # Ajouter ici la logique pour diriger la voiture au service de maintenance
 
             self.informerParking(ticket)
@@ -96,6 +105,7 @@ class Acces:
             instanceTeleporteur.teleporter_voiture("garer")
         else:
             print("Erreur : Service non reconnu.")
+            logging.info("Erreur : Service non reconnu.")
 
         # Libérer la place et mettre à jour le panneau d'affichage
         self.informerParking(ticket)

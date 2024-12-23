@@ -1,3 +1,5 @@
+import pydoc
+
 import ticket
 from parking.place import Place
 from service.client import Client
@@ -68,18 +70,4 @@ class Ticket:
 
 
 
-
-
-# Exemple de création d'un ticket
-client = Client(nom="assane", adresse="adr")
-# Correctement initialiser un objet Place avec les bons paramètres
-place = Place(numero=1, niveau="A", longeur=3, hauteur=2)  # En supposant que c'est une place de 3m x 2m
-
-ticket = Ticket(client, place, "carte")
-
-
-ticket_recherche = Ticket.findByNum(0)  # Recherche du ticket numéro 0
-if ticket_recherche:
-    print("Ticket trouvé : ", ticket_recherche)
-else:
-    print("Ticket non trouvé.")
+#pydoc.writedoc("ticket")

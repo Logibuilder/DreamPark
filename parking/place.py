@@ -66,10 +66,5 @@ class Place:
 
 #pydoc.writedoc("place")
 
-place = Place(5, "A", 5, 5)
-
-#place.set_valeur_libre(False)
-#print(place)
-
 
 

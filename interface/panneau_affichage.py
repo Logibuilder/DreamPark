@@ -1,7 +1,7 @@
 import parking
 from parking.gestion_parking import Parking
 
-
+import logging
 class PanneauAffichage:
     _instance = None  # Attribut de classe pour stocker l'instance unique
 
@@ -18,6 +18,7 @@ class PanneauAffichage:
 
     def afficherPaneau(self):
         print( Parking())
+        logging.info("Panneau affiché avec succès")
 
 
 

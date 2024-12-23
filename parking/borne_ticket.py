@@ -1,3 +1,5 @@
+import pydoc
+
 from controller.ticket import Ticket
 
 
@@ -110,50 +112,62 @@ class BorneTicket:
         return "payement_validé"'''
 
     def proposer_type_paiement(self):
-        """
-        Choisir un mode de paiement : carte ou espèce
-        """
-        payement = -1
-        tentatives1 = 3  # Nombre maximal de tentatives pour choisir le mode de paiement
-
-        # Choix du mode de paiement
-        while (payement != 1 and payement != 2) and tentatives1 > 0:
-            tentatives1 -= 1
-            print(f"Choix invalide. Il vous reste {tentatives1} tentative(s).")
-            try:
-                payement = int(input("Veillez choisir un mode de paiement.\nPar espèce, taper 1. Par carte, taper 2: "))
-            except ValueError:
-                print("Saisie invalide. Veuillez entrer un nombre. { 1 ou 2 }")
-                tentatives1 -= 1
-                continue
-
-        if tentatives1 == 0:
-            print("Nombre de tentatives dépassé. L'opération est annulée.")
+        """Propose un mode de paiement et vérifie la somme de paiement."""
+        paiement = self.choisir_mode_paiement()
+        if paiement is None:
             return "Opération annulée"
 
-        # Demander la somme de stationnement
-        somme = -1
-        tentatives2 = 3
-        if payement == 1:
+        if paiement == 1:  # Paiement par espèce
+            return self.gestion_paiement_espece()
 
-            # Vérification de la somme de stationnement
-            while tentatives2 > 0:
-                try:
-                    somme = int(input("Saisir la somme de stationnement (30 euro) : "))
-                    if somme == 30:
-                        break
-                    else:
-                        tentatives2 -= 1
-                        print(f"Montant incorrect. Il vous reste {tentatives2} tentative(s).")
-                except ValueError:
-                    print("Saisie invalide. Veuillez entrer un nombre entier(30) .")
-                    tentatives2 -= 1
-                    continue
+        return "Paiement validé"  # Si paiement par carte, on suppose que c'est validé
 
-        if tentatives2 == 0:
+    def choisir_mode_paiement(self):
+        """Choisir le mode de paiement."""
+        paiement = -1
+        tentatives = 3
+        while paiement not in [1, 2] and tentatives > 0:
+            tentatives -= 1
+            try:
+                paiement = int(input("Veuillez choisir un mode de paiement. Par espèce, tapez 1; par carte, tapez 2: "))
+                if paiement not in [1, 2]:
+                    print(f"Choix invalide. Il vous reste {tentatives} tentative(s).")
+            except ValueError:
+                print(f"Entrée invalide. Veuillez entrer un nombre. Il vous reste {tentatives} tentative(s).")
+
+        if tentatives == 0:
             print("Nombre de tentatives dépassé. L'opération est annulée.")
-            return "Opération_annulée"
+            return None
 
-        return "Paiement_validé"
+        return paiement
 
+    def proposer_type_paiement(self):
+        """Propose un mode de paiement et vérifie la somme de paiement."""
+        paiement = self.choisir_mode_paiement()
+        if paiement is None:
+            return "Opération annulée"
 
+        if paiement == 1:  # Paiement par espèce
+            return self.gestion_paiement_espece()
+
+        return "Paiement validé"  # Si paiement par carte
+
+    def gestion_paiement_espece(self):
+        """Gère le paiement par espèce."""
+        tentatives = 3
+        while tentatives > 0:
+            try:
+                somme = int(input("Saisir la somme de stationnement (30 euros) : "))
+                if somme == 30:
+                    print("Paiement validé")
+                    return "Paiement validé"
+                else:
+                    tentatives -= 1
+                    print(f"Montant incorrect. Il vous reste {tentatives} tentative(s).")
+            except ValueError:
+                tentatives -= 1
+                print(f"Saisie invalide. Il vous reste {tentatives} tentative(s).")
+        print("Nombre de tentatives dépassé. L'opération est annulée.")
+        return "Opération annulée"
+
+#pydoc.writedoc("borne_ticket")
