@@ -4,8 +4,8 @@ class Camera:
     """
         Auteur de cette classe : ASSANE KANE
     """
-    def __init__(self):
-        pass
+    def __init__(self , num):
+        self.num = num
 
     def capturer_hauteur(self, voiture):
         """

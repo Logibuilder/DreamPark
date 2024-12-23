@@ -1,27 +1,4 @@
-import pydoc
-
-from parking import voiture
-from parking.voiture import Voiture
-from service.client import Client
-from service.service import Service
-
-
-class Ticket:
-    def __init__(self, client, voiture):
-        self.client = client
-        self.voiture = voiture
-
-
-    def get_voiture_de_ticket(self):
-        return self.voiture
-
-
-    def __str__(self):
-        return (
-            f"Client: {self.client.nom}\n"
-            f"Voiture: {self.voiture.immatriculation}\n"
-            f"Longueur: {self.voiture.longueur}, Hauteur: {self.voiture.hauteur}"
-        )
+from controller.ticket import Ticket
 
 
 class BorneTicket:
@@ -44,10 +21,43 @@ class BorneTicket:
 
     def proposer_services(self):
         """
-        proposer les different types de service au client
-        return : { choix }
+        Propose différents services disponibles pour les clients.
+        Retourne le choix du client ou 'Annuler' si aucun choix n'est fait.
         """
-        return ""
+        print("=== Services Disponibles ===")
+        print("1. Livraison de voiture à une adresse spécifique")
+        print("2. Entretien du véhicule")
+        print("3. Maintenance du véhicule")
+        print("4. Annuler")
+
+        choix = -1
+        tentatives = 3  # Limite des tentatives de choix
+        while choix not in [1, 2, 3, 4] and tentatives > 0:
+            try:
+                choix = int(input("Veuillez choisir un service (1-4) : "))
+                if choix not in [1, 2, 3, 4]:
+                    tentatives -= 1
+                    print(f"Choix invalide. Il vous reste {tentatives} tentative(s).")
+            except ValueError:
+                tentatives -= 1
+                print(
+                    f"Entrée invalide. Veuillez entrer un nombre entre 1 et 4. Il vous reste {tentatives} tentative(s).")
+
+        if tentatives == 0 or choix == 4:
+            print("Nombre de tentatives dépassé ou choix annulé.")
+            return "annuler" , ""
+
+        if choix == 1:
+            adresse = input("Veuillez saisir l'adresse de livraison : ")
+            heure = input("Veuillez saisir l'heure de livraison (format HH:MM) : ")
+            print(f"Service de livraison sélectionné. Adresse : {adresse}, Heure : {heure}.")
+            return "livraison", {"adresse": adresse, "heure": heure}
+        elif choix == 2:
+            print("Vous avez choisi le service : Entretien du véhicule.")
+            return "entretien" , ""
+        elif choix == 3:
+            print("Vous avez choisi le service : Maintenance du véhicule.")
+            return "maintenance" , ""
 
     def prooser_abonnements(self, client, parking):
         """
@@ -145,4 +155,5 @@ class BorneTicket:
             return "Opération_annulée"
 
         return "Paiement_validé"
+
 

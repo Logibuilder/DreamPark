@@ -1,6 +1,9 @@
 import pydoc
+
+from controller.ticket import Ticket
 from parking.niveau import Niveau
-from parking.voiture import Voiture
+from parking.place import Place
+from service.client import Client
 
 
 class Parking:
@@ -24,16 +27,28 @@ class Parking:
     - lesNiveau : list
         Liste des niveaux disponibles dans le parking, initialisée avec des objets de type `niveau`.
     """
+
+class Parking:
+    _instance = None  # Stocke l'unique instance de Parking
+    def __new__(cls, *args, **kwargs):
+    # Si aucune instance n'existe encore, on en crée une nouvelle
+        if cls._instance is None:
+            cls._instance = super(Parking, cls).__new__(cls)
+        return cls._instance
     def __init__(self):
-        self.nbPlacesParNiveau = 50
-        self.nbPlacesLibre = 250
-        self.prix = 30#euro
-        self.nbNiveau = 4
-        A = Niveau("A", 3 , 1.90, 3)
-        B = Niveau("B", 3 , 2 , 4 )
-        C = Niveau("C", 4 , 2.70 , 5)
-        D = Niveau("D", 4 , 3 , 7)
-        self.lesNiveau = [A, B, C, D]
+    # Vérifie si l'instance a déjà été initialisée
+        if not hasattr(self, "initialized"):
+            self.nbPlacesParNiveau = 50
+            self.nbPlacesLibre = 250
+            self.prix = 30 # Prix en euros
+            self.nbNiveau = 4
+            # Création des niveaux du parking
+            A = Niveau("A", 3, 1.90, 3)
+            B = Niveau("B", 3, 2, 4)
+            C = Niveau("C", 4, 2.70, 5)
+            D = Niveau("D", 4, 3, 7)
+            self.lesNiveau = [A, B, C, D]
+            self.initialized = True
 
     def rechercherPlace(self, hauteur , longueur):
         """
@@ -44,12 +59,19 @@ class Parking:
         return place  ou une valeur particulière.
         """
         for level in self.lesNiveau:
-            val_particuliere, numplace, nom_niveau = level.a_place_diponible(hauteur, longueur)
-            if val_particuliere == "place":
-                return val_particuliere, numplace, nom_niveau
-        return "null_place", -1, "null_niveau"  # Si aucune place n'est trouvée
+            place = level.a_place_diponible(hauteur, longueur)
+            if place != None:
+                return place
+        return None  # Si aucune place n'est trouvée , on revoit none
 
+    def libererPlace(self, ticket):
+        for level in self.lesNiveau :
+            if ticket.place.id[0] == level.nom :
 
+                status = level.libererPlace(ticket)
+                print(status)
+                return status
+        return "not_ok"
 
 
     def nb_places_libres_par_niveau(self, niveau):
@@ -83,10 +105,14 @@ class Parking:
 
 
     def __str__(self):
+        res = ""
         for niveau in self.lesNiveau:
-            print(niveau)
-        print("\n\n\n")
+            res+= str(niveau)
+        res+="\n\n"
+
+        return res
 
 
 #pydoc.writedoc("parking")
+
 

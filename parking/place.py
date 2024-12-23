@@ -62,7 +62,7 @@ class Place:
         """
         statut = "✅" if self.est_libre else "❌"  # 🟢 pour libre, ❌ pour occupée
         id = f"\033[92m{self.id}\033[0m" if self.est_libre else f"\033[91m{self.id}\033[0m"
-        return  f"{id} {statut} (L{self.longeur}m x H{self.hauteur}m)"
+        return  f"{id} {statut}"
 
 #pydoc.writedoc("place")
 

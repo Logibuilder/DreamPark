@@ -12,15 +12,16 @@ class Teleporteur:
         """
         initialiser le teleporteur avec le num (on a deux teleporteurs au niveau des deux acces)
         """
-        self.num = int(num)
+        self.num = num
 
-    def teleporter_voiture(self, ticket, action):
+    def teleporter_voiture(self, action):
         if action == "garer" :
             print("voiture garée avec succés")
             return Placement(date.today(), date.today() + timedelta(days=1))
 
         if action == "recuper" :
-            print("voiture recupérée")
+            print("voiture sortie avec succès")
+
 
 
 
