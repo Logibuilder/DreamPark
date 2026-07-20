@@ -1,8 +1,8 @@
+![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 # DreamPark – Système de Gestion Automatisée de Stationnement
 
 ![avatar](dream_parc_avatar.png)
-![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue)
-![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
 DreamPark est un système d'information modulaire développé en Python pour la gestion intelligente de parkings. Il orchestre l'accès automatisé des véhicules, l'allocation dynamique des emplacements, la facturation, et l'intégration de services annexes (entretien, maintenance, livraison par voiturier).
 
