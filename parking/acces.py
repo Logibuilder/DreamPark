@@ -83,7 +83,7 @@ class Acces:
         if service == "livraison":
             adresse = info.get("adresse")
             heure = info.get("heure")
-            ogging.info(f"Votre voiture sera livrée à l'adresse : {adresse} à {heure}.")
+            logging.info(f"Votre voiture sera livrée à l'adresse : {adresse} à {heure}.")
             # Ajouter ici la logique de livraison (système de réservation ou d'affectation de voiturier)
             print(f"Votre voiture sera livrée à l'adresse : {adresse} à {heure}.")
             # Ajouter ici la logique de livraison (système de réservation ou d'affectation de voiturier)

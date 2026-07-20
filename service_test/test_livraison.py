@@ -1,18 +1,22 @@
 import unittest
+import io
+from contextlib import redirect_stdout
+from service.livraison import Livraison
 
-
-class MyTestCase(unittest.TestCase):
+class TestLivraison(unittest.TestCase):
     """
     Auteur : Ulrich Babbel Mbonihankuye
- 
-    Suite a la demande d'un client le voiturier doit livrer sa voiture
-    test_effectuer_livraison: prend en parametre un voiturier et une voiture
-
-    on dois retourner "livraison livraison livraison"
+    Suite a la demande d'un client le voiturier doit livrer sa voiture.
     """
     def test_effectuer_livraison(self):
-        self.assertEqual(True, False)  # add assertion here
-
+        livraison = Livraison("2026-07-20", "14:00", "Rapport de livraison")
+        
+        # Capture de la sortie standard (print)
+        captured_output = io.StringIO()
+        with redirect_stdout(captured_output):
+            livraison.effectuer_livraison()
+            
+        self.assertIn("livraison livraison livraison", captured_output.getvalue())
 
 if __name__ == '__main__':
     unittest.main()

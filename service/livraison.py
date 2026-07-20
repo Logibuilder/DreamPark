@@ -1,7 +1,7 @@
 from service import service as s
 
 
-class Livraison(s.service.Service):
+class Livraison(s.Service):
     """
     Auteur:Mbonihankuye Ulrich Babbel
     

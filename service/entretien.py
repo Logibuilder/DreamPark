@@ -1,7 +1,7 @@
 import service.service as s
 
 
-class Entretien(s.service.Service):
+class Entretien(s.Service):
 
     """
     Auteur:Mbonihankuye Ulrich Babbel

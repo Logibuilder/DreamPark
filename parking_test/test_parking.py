@@ -16,6 +16,7 @@ class TestParking(unittest.TestCase):
 
     def setUp(self):
         """Initialisation avant chaque test."""
+        Parking._instance = None
         self.parking = Parking()
 
     def test_singleton(self):

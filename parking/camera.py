@@ -23,7 +23,7 @@ class Camera:
         """
         return l'immatricule  de la voiture
           """
-        return voiture.immatri
+        return voiture.immatriculation
 
 
 #pydoc.writedoc("camera")

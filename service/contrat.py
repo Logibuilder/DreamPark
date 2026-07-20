@@ -27,4 +27,4 @@ class Contrat:
             self.est_en_cours = False
 
 
-pydoc.writedoc("contrat")
+# pydoc.writedoc("contrat")

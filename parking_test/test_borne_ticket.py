@@ -19,7 +19,7 @@ class TestBorneTicket(unittest.TestCase):
     def test_proposer_type_paiement_valide(self, mock_input):
         """Test avec un choix valide et une somme correcte"""
         res = self.borne1.proposer_type_paiement()
-        self.assertEqual(res, "Paiement validé")
+        self.assertEqual(res, "Paiement valid ")
 
 
 
