@@ -1,6 +1,6 @@
 # DreamPark – Système de Gestion Automatisée de Stationnement
 
-![avatar](dream_park_avatar.png)
+![avatar](dream_parc_avatar.png)
 ![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
